@@ -5,8 +5,9 @@ import GameSavingLoader from '../app';
 
 const hitman = new GameSaving(JSON.parse(savingData));
 
-test('game saving', async (done) => {
-  const data = await GameSavingLoader.load().then();
-  expect(data).toEqual(hitman);
-  done();
+test('game saving', (done) => {
+  GameSavingLoader.load().then(data => {   
+    expect(data).toEqual(hitman);
+    done();
+  });
 });
